@@ -1,7 +1,9 @@
 package com.eduard.ciclo3.Controlador;
 
 import com.eduard.ciclo3.Modelo.Reservation;
+import com.eduard.ciclo3.Repositorio.CountClient;
 import com.eduard.ciclo3.Servicio.ReservationServicio;
+import com.eduard.ciclo3.Servicio.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +42,21 @@ public class ReservationControlador {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
         return reservationService.deleteReservation(id);
+    }
+
+    @GetMapping("/report-clients")
+    public List<CountClient> getReservationsReportClient(){
+        return reservationService.getTopClients();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(@PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return reservationService.informePeriodoTiempoReservas(dateOne,dateTwo);
+    }
+
+    @GetMapping("/report-status")
+    public Status getReservationsStatusReport(){
+        return reservationService.getReservationStatusReport();
     }
   
 }
