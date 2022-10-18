@@ -27,13 +27,13 @@ public class GameControlador {
      @Autowired
     private GameServicio gameservice;
     @GetMapping("/all")
-    public List<Game> getRooms(){
+    public List<Game> getGames(){
         return gameservice.getAll();
     }
 
 
     @GetMapping("/{id}")
-    public Optional<Game> getRoom(@PathVariable("id") int gameId) {
+    public Optional<Game> getGame(@PathVariable("id") int gameId) {
         return gameservice.getGame(gameId);
     }
 

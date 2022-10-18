@@ -71,7 +71,7 @@ public class Reservation implements Serializable {
         return game;
     }
 
-    public void setRoom(Game game) {
+    public void setGame(Game game) {
         this.game = game;
     }
 

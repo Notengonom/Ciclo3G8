@@ -68,8 +68,8 @@ public class GameServicio {
     
     
       public boolean deleteGame (int id){
-        Boolean d = getGame(id).map(room -> {
-            gameRepositorio.delete(room);
+        Boolean d = getGame(id).map(game -> {
+            gameRepositorio.delete(game);
             return true;
         }).orElse(false);
         return d;
